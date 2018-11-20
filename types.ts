@@ -421,17 +421,6 @@ export type ItemPocket = {
     names: Name[];
 }
 
-export type ItemPocket = {
-    /** The identifier for this resource. */
-    id: number;
-    /** The name for this resource. */
-    name: string;
-    /** A list of item categories that are relevant to this item pocket. */
-    categories: NamedAPIResource<ItemCategory>[];
-    /** The name of this resource listed in different languages. */
-    names: Name[];
-}
-
 export type Location = {
     /** The identifier for this resource. */
     id: number;
@@ -591,9 +580,9 @@ export type ContestComboSets = {
 
 export type ContestComboDetail = {
     /** A list of moves to use before this move. */
-    use_before: NamedAPIResource[];
+    use_before: NamedAPIResource<Move>[];
     /** A list of moves to use after this move. */
-    use_after: NamedAPIResource[];
+    use_after: NamedAPIResource<Move>[];
 }
 
 export type MoveFlavorText = {
@@ -605,11 +594,11 @@ export type MoveFlavorText = {
     version_group: NamedAPIResource<VersionGroup>;
 }
 
-export type MoveAilment = {
+export type MoveMetaData = {
     /** The status ailment this move inflicts on its target. */
     ailment: NamedAPIResource<MoveAilment>;
     /** The category of move this move falls under, e.g. damage or ailment. */
-    category: NamedAPIResource<Move>;
+    category: NamedAPIResource<MoveCategory>;
     /** The minimum number of times this move hits. Null if it always only hits once. */
     min_hits: number;
     /** The maximum number of times this move hits. Null if it always only hits once. */
@@ -676,7 +665,7 @@ export type MoveBattleStyle = {
     names: Name[];
 }
 
-export type ModelName = {
+export type MoveCategory = {
     /** The identifier for this resource. */
     id: number;
     /** The name for this resource. */
@@ -687,7 +676,7 @@ export type ModelName = {
     descriptions: Description[];
 }
 
-export type ModelName = {
+export type MoveDamageClass = {
     /** The identifier for this resource. */
     id: number;
     /** The name for this resource. */
@@ -738,7 +727,7 @@ export type Ability = {
     /** The name of this resource listed in different languages. */
     names: Name[];
     /** The effect of this ability listed in different languages. */
-    effect_entries: names[];
+    effect_entries: Effect[];
     /** The list of previous effects this ability has had across version groups. */
     effect_changes: AbilityEffectChange[];
     /** The flavor text of this ability listed in different languages. */
